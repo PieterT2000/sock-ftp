@@ -1,8 +1,8 @@
 server/*
-server/!*.py
+!server/*.py
 
 client/*
-client/!*.py
+!client/*.py
 
 __pycache__/
 Source.zip
