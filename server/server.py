@@ -58,8 +58,19 @@ def handle_put(fd, cli_conn, cli_addr):
 
 
 def handle_list(fd, cli_conn, cli_addr):
-    ls = "***".join(os.listdir())
-    cli_conn.send(ls.encode("utf-8"))
+    ls = os.listdir()
+    cyan_color = "\033[96m"
+    rst_color = "\033[0m"
+    ls_str = ""
+    line_sep = "***"
+    for item in ls:
+        # directories should be blue
+        if os.path.isdir(item):
+            ls_str += f"{cyan_color}{item}{rst_color}{line_sep}"
+        else:
+            ls_str += item + line_sep
+
+    cli_conn.send(ls_str.encode("utf-8"))
     log_success(f"list", cli_addr)
 
 

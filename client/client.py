@@ -72,13 +72,8 @@ def get_list(fd, client):
     client.send(f"list {fd}".encode("utf-8"))
     res = client.recv(2048).decode("utf-8")
     print("./")
-    cyan_color = "\033[96m"
-    rst_color = "\033[0m"
     for item in res.split("***"):
-        if os.path.isdir(item):
-            print(f"  {cyan_color}{item}/{rst_color}")
-        else:
-            print(f"  {item}")
+        print(f"  {item}")
     log_success(f"list {fd}", server_addr)
 
 
