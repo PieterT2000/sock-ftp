@@ -1,0 +1,10 @@
+server/*
+server/!*.py
+
+client/*
+client/!*.py
+
+__pycache__/
+Source.zip
+yarn-error.log
+**/.DS_Store

@@ -1,0 +1,7 @@
+#!/bin/bash
+tcp_pid="$(lsof -ti:12000)"
+if [ -n "$tcp_pid" ]; then
+  kill -15 $tcp_pid
+fi
+cd server
+python server.py 12000

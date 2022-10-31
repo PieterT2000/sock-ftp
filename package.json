@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "start": "./startup",
+    "build": "zip -r Source.zip client/*.py server/*.py helpers.py",
+    "watch": "nodemon -q --watch ./helpers.py --watch server/*.py --exec \"yarn start\""
+  }
+}
