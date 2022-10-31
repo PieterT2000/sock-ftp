@@ -10,7 +10,11 @@ if len(sys.argv) < 2:
     print("Usage: python server.py <port>")
     exit(1)
 
-port = sys.argv[1]
+try:
+    port = int(sys.argv[1])
+except ValueError:
+    print("Port must be an integer")
+    exit(1)
 
 # Create a TCP socket
 serverSocket = socket(AF_INET, SOCK_STREAM)

@@ -10,7 +10,11 @@ if len(sys.argv) < 4:
     exit(1)
 
 hostname = sys.argv[1]
-port = int(sys.argv[2])
+try:
+    port = int(sys.argv[2])
+except ValueError:
+    print("Port must be an integer")
+    exit(1)
 server_addr = (hostname, port)
 cmd = sys.argv[3]
 
@@ -69,12 +73,12 @@ def put(fd, client):
 
 
 def get_list(fd, client):
-    client.send(f"list {fd}".encode("utf-8"))
+    client.send(f"list".encode("utf-8"))
     res = client.recv(2048).decode("utf-8")
     print("./")
     for item in res.split("***"):
         print(f"  {item}")
-    log_success(f"list {fd}", server_addr)
+    log_success(f"list", server_addr)
 
 
 cmd_map = {
